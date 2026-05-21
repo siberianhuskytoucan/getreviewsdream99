@@ -181,6 +181,55 @@ code {
   margin-bottom: 18px;
 }
 
+.rating-section {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #fff9e6;
+  border-radius: 14px;
+  border: 1px solid #ffd700;
+}
+
+.rating-section h4 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+}
+
+.stars-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.star {
+  font-size: 2rem;
+  color: #d1d5db;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.star:hover {
+  color: #fcd34d;
+  transform: scale(1.2);
+}
+
+.star.filled {
+  color: #fbbf24;
+}
+
+.rating-info {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.average-rating {
+  font-weight: 600;
+  color: #111827;
+}
+
+.rating-count {
+  font-weight: 600;
+  color: #111827;
+}
+
 .comment-list {
   list-style: none;
   padding: 0;

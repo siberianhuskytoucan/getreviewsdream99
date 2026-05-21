@@ -108,6 +108,55 @@ function renderDreams() {
     text.textContent = dream.text;
     card.appendChild(text);
 
+    // Add star rating section
+    const ratingSection = document.createElement('div');
+    ratingSection.className = 'rating-section';
+
+    const ratingTitle = document.createElement('h4');
+    ratingTitle.textContent = 'Rate this dream';
+    ratingSection.appendChild(ratingTitle);
+
+    const starsContainer = document.createElement('div');
+    starsContainer.className = 'stars-container';
+    
+    const ratings = dream.ratings || [];
+    const averageRating = ratings.length > 0 ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1) : 0;
+    
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement('span');
+      star.className = 'star';
+      star.textContent = '★';
+      star.style.cursor = 'pointer';
+      star.dataset.value = i;
+      
+      if (i <= Math.ceil(averageRating)) {
+        star.classList.add('filled');
+      }
+      
+      star.addEventListener('click', () => {
+        const allDreams = loadDreams();
+        const targetDream = allDreams.find((item) => item.id === dream.id);
+        if (!targetDream) {
+          showStatus('Could not find the dream to rate.', false);
+          return;
+        }
+        targetDream.ratings = targetDream.ratings || [];
+        targetDream.ratings.push(i);
+        saveDreams(allDreams);
+        renderDreams();
+        showStatus('Rating submitted successfully!');
+      });
+      
+      starsContainer.appendChild(star);
+    }
+    
+    const ratingInfo = document.createElement('div');
+    ratingInfo.className = 'rating-info';
+    ratingInfo.innerHTML = `<span class="average-rating">${averageRating}</span> stars from <span class="rating-count">${ratings.length}</span> ratings`;
+    ratingSection.appendChild(starsContainer);
+    ratingSection.appendChild(ratingInfo);
+    card.appendChild(ratingSection);
+
     const commentSection = document.createElement('div');
     commentSection.className = 'comment-section';
 
@@ -215,6 +264,7 @@ dreamForm.addEventListener('submit', (event) => {
     text,
     createdAt: new Date().toISOString(),
     comments: [],
+    ratings: [],
   });
 
   saveDreams(dreams);
