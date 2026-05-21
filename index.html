@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>demystifygetreviewssuperb99.com</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header>
+        <div class="brand">
+          <h1>demystifygetreviewssuperb99.com</h1>
+          <p>Share your dreams, receive reviews, and comment on dreams.</p>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel">
+          <h2>Post Your Dream</h2>
+          <form id="dreamForm">
+            <label for="dreamerName">Your name</label>
+            <input id="dreamerName" name="dreamerName" type="text" placeholder="Enter your name" required />
+
+            <label for="dreamText">Your dream</label>
+            <textarea id="dreamText" name="dreamText" rows="5" placeholder="Describe your dream" required></textarea>
+
+            <div class="info-box" id="paymentInfoBox">
+              <p>
+                Your first dream is free. For the second dream publish, please send exactly $5 in BTC or ETH to the address shown below.
+              </p>
+              <div class="conversion-row">
+                <div>
+                  <strong>Bitcoin (BTC)</strong>
+                  <div id="btcAmount">Loading...</div>
+                </div>
+                <button type="button" id="copyBtc">Copy BTC address</button>
+              </div>
+              <div class="conversion-row">
+                <div>
+                  <strong>Ethereum (ETH)</strong>
+                  <div id="ethAmount">Loading...</div>
+                </div>
+                <button type="button" id="copyEth">Copy ETH address</button>
+              </div>
+              <div class="address-block">
+                <p><strong>Bitcoin address</strong></p>
+                <code id="btcAddress">bc1qvxukeasjgkz7nzvrvk9a9er7a33rstrdv5u4e5</code>
+                <p><strong>Ethereum address</strong></p>
+                <code id="ethAddress">0x43Cd79268989418085d4F5C17137c29BbBd3d1de</code>
+              </div>
+              <button type="button" id="confirmPaymentBtn" class="secondary">I paid $5 in BTC or ETH</button>
+              <p class="help-text">The site uses public exchange rates to calculate the amount. Payment is manual and must be sent to one of the addresses above.</p>
+            </div>
+
+            <button type="submit" id="submitDream">Publish dream</button>
+            <p class="status" id="formStatus"></p>
+          </form>
+        </section>
+
+        <section class="panel" id="dreamsSection">
+          <h2>Dream Posts</h2>
+          <div id="dreamList" class="dream-list"></div>
+        </section>
+      </main>
+
+      <footer>
+        <p>demystifygetreviewssuperb99.com</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
